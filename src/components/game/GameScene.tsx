@@ -93,6 +93,7 @@ const GameScene = ({
               actionName={actionName}
               actionId={actionId}
               bullState={bullState}
+              bullMood={bullMood}
             />
             {humans.map((human) => (
               <Human
