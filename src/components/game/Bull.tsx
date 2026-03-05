@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import DustEffect from "./DustEffect";
 
 interface BullProps {
   position: [number, number, number];
@@ -13,20 +12,9 @@ interface BullProps {
   actionName?: string | null;
   actionId?: number;
   bullState?: string;
-  bullMood?: "calm" | "alert" | "aggressive" | "furious";
 }
 
-const Bull = ({
-  position,
-  rotation,
-  isShaking,
-  isCharging = false,
-  speed = 0,
-  actionName = null,
-  actionId = 0,
-  bullState = "IDLE",
-  bullMood = "calm"
-}: BullProps) => {
+const Bull = ({ position, rotation, isShaking, isCharging = false, speed = 0, actionName = null, actionId = 0, bullState = "IDLE" }: BullProps) => {
   const { scene, animations } = useGLTF("/models/bull.glb");
   const groupRef = useRef<THREE.Group>(null);
   const shakeRef = useRef(0);
@@ -171,21 +159,7 @@ const Bull = ({
 
   return (
     <group ref={groupRef}>
-      <DustEffect active={speed > 2} position={[0, 0, -1]} intensity={speed > 7 ? 2 : 1} />
       <primitive object={scene} scale={[1.5, 1.5, 1.5]} />
-      {bullMood === "furious" && (
-        <>
-          <pointLight
-            position={[0, 1.5, 0.5]}
-            intensity={2 * (Math.sin(Date.now() * 0.01) * 0.5 + 1)}
-            color="#ff0000"
-            distance={5}
-          />
-          {/* Eye glows */}
-          <pointLight position={[0.4, 2.2, 1.2]} intensity={1} color="#ff3300" distance={1} />
-          <pointLight position={[-0.4, 2.2, 1.2]} intensity={1} color="#ff3300" distance={1} />
-        </>
-      )}
     </group>
   );
 };

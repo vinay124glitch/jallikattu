@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import Bull from "./Bull";
 import Human from "./Human";
 import Arena from "./Arena";
-import Audience from "./Audience";
 import FollowCamera from "./FollowCamera";
 
 interface HumanData {
@@ -81,7 +80,6 @@ const GameScene = ({
 
       <Suspense fallback={null}>
         <Arena />
-        <Audience />
         {gameState !== "menu" && (
           <>
             <Bull
@@ -93,7 +91,6 @@ const GameScene = ({
               actionName={actionName}
               actionId={actionId}
               bullState={bullState}
-              bullMood={bullMood}
             />
             {humans.map((human) => (
               <Human

@@ -3,7 +3,6 @@ import { useFrame } from "@react-three/fiber";
 import { useFBX, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 import * as SkeletonUtils from "three/examples/jsm/utils/SkeletonUtils.js";
-import DustEffect from "./DustEffect";
 
 interface HumanProps {
   position: [number, number, number];
@@ -194,7 +193,6 @@ const Human = ({ position, rotation, attached, color, actionName, actionId = 0 }
 
   return (
     <group ref={meshRef}>
-      <DustEffect active={speed > 3} position={[0, 0, -0.2]} />
       <primitive object={model} scale={[0.016, 0.016, 0.016]} />
     </group>
   );

@@ -214,7 +214,7 @@ class SoundGenerator {
     this.crowdGainNode = null;
   }
 
-  public playCrowdClap() {
+  private playCrowdClap() {
     const { ctx, master } = this.getCtx();
     // Multiple short noise bursts = clapping
     for (let i = 0; i < 3 + Math.floor(Math.random() * 4); i++) {
@@ -236,7 +236,7 @@ class SoundGenerator {
     }
   }
 
-  public playCrowdCheer() {
+  private playCrowdCheer() {
     const { ctx, master } = this.getCtx();
     // Rising tone = crowd "ooh!"
     const osc = ctx.createOscillator();
@@ -253,7 +253,7 @@ class SoundGenerator {
     osc.stop(ctx.currentTime + 0.5);
   }
 
-  public playCrowdRoar() {
+  private playCrowdRoar() {
     const { ctx, master } = this.getCtx();
     // Big noise burst = crowd roar
     const len = 0.6 + Math.random() * 0.4;
@@ -334,8 +334,6 @@ export const useGameSounds = () => {
     playShakeOff: () => getSound().playShakeOff(),
     playScore: () => getSound().playScore(),
     playGameOver: () => getSound().playGameOver(),
-    playCheer: () => getSound().playCrowdCheer(),
-    playRoar: () => getSound().playCrowdRoar(),
     startGame: () => getSound().startGame(),
     stopAmbient: () => getSound().stopAmbient(),
   };

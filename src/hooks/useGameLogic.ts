@@ -195,7 +195,6 @@ export const useGameLogic = () => {
                 bullStaminaRef.current -= 15; // Decreased human attack damage from 25
                 setCameraShake(0.5);
                 sounds.playShakeOff();
-                sounds.playCheer(); // Crowd cheers for attack
                 if (bullStaminaRef.current <= 0) {
                   setBullState("RECOVER");
                   setIsCharging(false);
@@ -341,7 +340,6 @@ export const useGameLogic = () => {
                 setBullState("CHARGE");
                 setIsCharging(true);
                 setCameraShake(0.6);
-                sounds.playRoar(); // Crowd roars at start of charge
                 bullStateTimerRef.current = 5;
               } else {
                 setBullState("IDLE");
@@ -484,7 +482,6 @@ export const useGameLogic = () => {
                   setTimeScale(0.25);
                   setCameraShake(1.2);
                   sounds.playGameOver();
-                  sounds.playRoar(); // Crowd reacts to hit
 
                   const nextLives = playerLives - 1;
                   setPlayerLives(nextLives);
